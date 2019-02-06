@@ -6,7 +6,13 @@ from preprocess import preProcess
 from ml import predictInput
 
 def submit():
-    lblOutput.configure(text=txtInput.get())
+    inputData = {
+        'Tweet': txtInput.get()
+    }
+    data = pd.DataFrame(data=inputData)
+    # cleaned_data = preProcess(data)
+    # result = predictInput(cleaned_data)
+    # lblOutput.configure(text=str(result))
 
 def uploadAction(event=None):
     filename = filedialog.askopenfilename()
