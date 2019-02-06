@@ -7,9 +7,14 @@ def submit():
 
 def UploadAction(event=None):
     filename = filedialog.askopenfilename()
-    # TODO: Read input file and process
-    data = pd.read_csv(filename)
-    print(data)
+    if not filename.endswith(".csv") and not filename.endswith(".xlsx"):
+        lblOutput.configure(text="Wrong input file")
+    else:
+        # TODO: Read input file and process
+        if filename.endswith(".xlsx"):
+            data = pd.read_excel(filename) 
+        else:
+            data = pd.read_csv(filename)
 
 if __name__ == "__main__":
     window = Tk()
