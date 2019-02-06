@@ -2,10 +2,13 @@ from tkinter import *
 from tkinter import filedialog
 import pandas as pd
 
+from preprocess import preProcess
+from ml import predictInput
+
 def submit():
     lblOutput.configure(text=txtInput.get())
 
-def UploadAction(event=None):
+def uploadAction(event=None):
     filename = filedialog.askopenfilename()
     if not filename.endswith(".csv") and not filename.endswith(".xlsx"):
         lblOutput.configure(text="Wrong input file")
@@ -15,6 +18,10 @@ def UploadAction(event=None):
             data = pd.read_excel(filename) 
         else:
             data = pd.read_csv(filename)
+
+        # cleaned_data = preProcess(data)
+        # result = predictInput(cleaned_data)
+        # lblOutput.configure(text=str(result))
 
 if __name__ == "__main__":
     window = Tk()
@@ -27,7 +34,7 @@ if __name__ == "__main__":
     txtInput = Entry(window,width=10)
     txtInput.grid(column=1, row=0)
 
-    btnUpload = Button(window, text="Upload file", command=UploadAction)
+    btnUpload = Button(window, text="Upload file", command=uploadAction)
     btnUpload.grid(column=2, row=0)
 
     btnSubmit = Button(window, text="Submit", command=submit)
