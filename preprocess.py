@@ -15,7 +15,7 @@ def preProcess(data):
 # reshape target label into 1 column
 def reshapeColumn(data):
     # input dataframe
-    label = ['Keluhan', 'Respon', 'Default']
+    label = ['Keluhan', 'Respon', 'Lain-lain']
     data['Label'] = [label[np.where(data.loc[i, ['Keluhan', 'Respon', 'Bukan Keluhan/Respon']].values == 'Ya')[0][0]]
                  if len(np.where(data.loc[i, ['Keluhan', 'Respon', 'Bukan Keluhan/Respon']].values == 'Ya')[0]) > 0
                  else 'None'
