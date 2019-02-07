@@ -3,7 +3,8 @@ from tkinter import filedialog
 import pandas as pd
 
 from preprocess import preProcess
-from ml import predictInput
+from model import trainingModel
+from predict import predictInput
 
 def submit():
     inputData = {

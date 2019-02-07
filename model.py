@@ -28,10 +28,3 @@ def trainingModel():
     # save model
     model_filename = 'final_model.sav'
     pickle.dump(model, open(model_filename, 'wb'))
-
-def predictInput(data):
-    model_filename = 'final_model.sav'
-    model = pickle.load(open(model_filename, 'rb'))
-    predictions = model.predict(data.tweet)
-    data.label = predictions
-    return data
