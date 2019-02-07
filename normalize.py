@@ -21,7 +21,4 @@ def wordNormalize(data):
         normalizedTweets.append(json.loads(response.text)['text'])
 
     data['Tweet'] = normalizedTweets
-
-    # Optional: save result
-    # data.to_csv("database/normalized_tweets.csv", index=False)
     return data
