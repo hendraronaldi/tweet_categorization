@@ -7,7 +7,7 @@ from ml import predictInput
 
 def submit():
     inputData = {
-        'Tweet': txtInput.get()
+        'tweet': txtInput.get()
     }
     data = pd.DataFrame(data=inputData)
     # cleaned_data = preProcess(data)

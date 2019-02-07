@@ -12,8 +12,8 @@ def trainingModel():
     cleaned_data = preProcess(data)
     
     # train test split
-    X = cleaned_data[['Tweet']]
-    y = cleaned_data[['Label']]
+    X = cleaned_data[['tweet']]
+    y = cleaned_data[['label']]
     X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.3, random_state=42)
 
     # train model
@@ -32,6 +32,6 @@ def trainingModel():
 def predictInput(data):
     model_filename = 'final_model.sav'
     model = pickle.load(open(model_filename, 'rb'))
-    predictions = model.predict(data.Tweet)
-    data.Label = predictions
+    predictions = model.predict(data.tweet)
+    data.label = predictions
     return data

@@ -9,7 +9,7 @@ def wordNormalize(data):
         config = json.load(config_file)
 
     normalizedTweets = []
-    for tweet in data.Tweet:
+    for tweet in data.tweet:
         body = {
             'text': tweet
         }
@@ -20,5 +20,5 @@ def wordNormalize(data):
         )
         normalizedTweets.append(json.loads(response.text)['text'])
 
-    data['Tweet'] = normalizedTweets
+    data['tweet'] = normalizedTweets
     return data
