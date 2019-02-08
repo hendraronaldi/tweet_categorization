@@ -3,17 +3,20 @@ from tkinter import filedialog
 import pandas as pd
 
 from preprocess import preProcess
+from feature2 import featureExtraction
 from model import trainingModel
 from predict import predictInput
 
 def submit():
     inputData = {
-        'tweet': txtInput.get()
+        'tweet': [txtInput.get()]
     }
     data = pd.DataFrame(data=inputData)
-    # cleaned_data = preProcess(data)
-    # result = predictInput(cleaned_data)
-    # lblOutput.configure(text=str(result))
+    cleaned_data = preProcess(data)
+    cleaned_data = featureExtraction(cleaned_data)
+    result = predictInput(cleaned_data)
+    result.insert(loc=0, column='tweet', value=[txtInput.get()])
+    lblOutput.configure(text=str(result))
 
 def uploadAction(event=None):
     filename = filedialog.askopenfilename()
@@ -24,11 +27,13 @@ def uploadAction(event=None):
         if filename.endswith(".xlsx"):
             data = pd.read_excel(filename) 
         else:
-            data = pd.read_csv(filename)
+            data = pd.read_csv(filename, encoding = "ISO-8859-1")
 
-        # cleaned_data = preProcess(data)
-        # result = predictInput(cleaned_data)
-        # lblOutput.configure(text=str(result))
+        cleaned_data = preProcess(data)
+        cleaned_data = featureExtraction(cleaned_data)
+        result = predictInput(cleaned_data)
+        result.insert(loc=0, column='tweet', value=data['tweet'])
+        lblOutput.configure(text=str(result))
 
 if __name__ == "__main__":
     window = Tk()
