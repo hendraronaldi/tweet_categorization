@@ -5,7 +5,7 @@ import json
 
 def wordNormalize(data):
     url = 'https://api.prosa.ai/v1/normals'
-    with open('../config.json') as config_file:
+    with open('config.json') as config_file:
         config = json.load(config_file)
 
     normalizedTweets = []
