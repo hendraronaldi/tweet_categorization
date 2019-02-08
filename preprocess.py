@@ -1,10 +1,11 @@
 from normalize import wordNormalize
 import numpy as np
+import pandas as pd
 
 # TODO: Add all pre process data in this function
 def preProcess(data):
     # input dataframe
-    if len(list(data) > 1): # if train data
+    if len(list(data))> 1: # if train data
         data = reshapeColumn(data)
         data = selectImportantColumnOnly(data)
         data = removeMissingValue(data)
