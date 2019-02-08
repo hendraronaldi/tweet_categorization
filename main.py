@@ -3,7 +3,7 @@ from tkinter import filedialog
 import pandas as pd
 
 from preprocess import preProcess
-from feature2 import featureExtraction
+from feature import featureExtraction
 from model import trainingModel
 from predict import predictInput
 
