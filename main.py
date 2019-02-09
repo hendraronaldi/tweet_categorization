@@ -1,10 +1,14 @@
+# python 3 tkinter
 from tkinter import *
 from tkinter import filedialog
-import pandas as pd
 
+# python 2 tkinter
+# from Tkinter import *
+# import Tkinter, Tkconstants, tkFileDialog
+
+import pandas as pd
 from preprocess import preProcess
 from feature import featureExtraction
-from model import trainingModel
 from predict import predictInput
 
 def submit():
@@ -19,7 +23,12 @@ def submit():
     lblOutput.configure(text=str(result))
 
 def uploadAction(event=None):
+    # python 3 import file using tkinter
     filename = filedialog.askopenfilename()
+
+    # python 2 import file using tkinter
+    # filename = tkFileDialog.askopenfilename()
+
     if not filename.endswith(".csv") and not filename.endswith(".xlsx"):
         lblOutput.configure(text="Wrong input file")
     else:
@@ -38,7 +47,7 @@ def uploadAction(event=None):
 if __name__ == "__main__":
     window = Tk()
     window.title("Klasifikasi Keluhan")
-    window.geometry('350x200')
+    window.geometry('700x550')
 
     lblInput = Label(window, text="Masukkan text")
     lblInput.grid(column=0, row=0)
