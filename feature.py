@@ -1,18 +1,21 @@
 # TODO: Add feature extraction
-import os.path
 import pickle
 
 def featureExtraction(data):
+    #input
     data.columns = ['tweet']
     
     inputTweet = []
     i = 0
     for twt in data.iterrows():
-        #buang white space, simpan dalam list
-        inputTweet.append(unicode(data['tweet'][i],errors='ignore'))
+        #unicode error handling
+        inputTweet.append(data['tweet'][i].encode('utf-8',errors='ignore'))
         i = i + 1
     
-    vectorizer = pickle.load(open('vectorizer.pk','rb'))
+    #load vectorizer
+    vectorizer = pickle.load(open('vectorizer.pk','rb'), encoding='latin1')
+    
+    #transform input data into vector
     x = vectorizer.transform(inputTweet)
     
-    return x
+    return x.toarray()
